@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build: .
+    container_name: phoenix_portfolio
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+      - JWT_SECRET=change-this-jwt-secret-in-production
+    volumes:
+      - portfolio_data:/app/data
+      - portfolio_uploads:/app/public/uploads
+
+volumes:
+  portfolio_data:
+  portfolio_uploads:
